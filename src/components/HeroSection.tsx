@@ -37,9 +37,9 @@ const HeroSection: React.FC = () => {
               
               <div className="flex items-center space-x-3">
                 <div className="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
-                  <span className="text-green-600 font-extrabold text-4xl">✓</span>
+                  <span className="text-green-600 font-extrabold text-base">✓</span>
                 </div>
-                <p className="text-xl font-bold text-green-600">5x de R$ 9,90</p>
+                <p className="font-bold text-green-600 text-4xl">5x de R$ 9,90</p>
               </div>
               
               <div className="flex items-center space-x-3">
