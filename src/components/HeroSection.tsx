@@ -1,16 +1,15 @@
-
 import React from 'react';
 import PulsatingButton from './PulsatingButton';
-
 const HeroSection: React.FC = () => {
-  return (
-    <section className="relative min-h-screen pt-24 overflow-hidden flex items-center">
+  return <section className="relative min-h-screen pt-24 overflow-hidden flex items-center">
       {/* Background gradient with subtle animation */}
       <div className="absolute inset-0 bg-gradient-to-br from-pink-50 via-white to-purple-50 z-0" />
       
       {/* Animated background elements */}
       <div className="absolute top-40 -left-24 w-64 h-64 rounded-full bg-pink-500/10 animate-float blur-3xl" />
-      <div className="absolute bottom-40 -right-24 w-80 h-80 rounded-full bg-purple-500/10 animate-float blur-3xl" style={{ animationDelay: '1s' }} />
+      <div className="absolute bottom-40 -right-24 w-80 h-80 rounded-full bg-purple-500/10 animate-float blur-3xl" style={{
+      animationDelay: '1s'
+    }} />
       
       <div className="max-container relative z-10 pt-10">
         <div className="grid md:grid-cols-2 gap-10 items-center">
@@ -64,11 +63,7 @@ const HeroSection: React.FC = () => {
               <div className="absolute -top-6 -right-6 bg-yellow-300 text-yellow-800 px-6 py-3 font-bold rounded-lg transform rotate-12 shadow-lg">
                 ACESSO IMEDIATO!
               </div>
-              <img 
-                src="https://images.unsplash.com/photo-1624953901718-1f4f3d3bdff0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80" 
-                alt="Fornecedores Nacionais" 
-                className="w-full h-auto rounded-xl shadow-lg"
-              />
+              <img alt="Fornecedores Nacionais" className="w-full h-auto rounded-xl shadow-lg" src="/lovable-uploads/e005766f-61ac-4300-b444-8093cb4e53d0.png" />
               <div className="mt-4 text-left">
                 <h3 className="text-xl font-bold">Lista Completa de Fornecedores</h3>
                 <p className="text-gray-600 mt-2">Mais de 300 fornecedores verificados para diversos nichos de mercado.</p>
@@ -84,8 +79,6 @@ const HeroSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default HeroSection;
