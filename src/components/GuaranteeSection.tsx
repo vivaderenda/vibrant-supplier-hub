@@ -13,14 +13,14 @@ const GuaranteeSection: React.FC = () => {
         <div className="glass-card max-w-4xl mx-auto p-8 md:p-12 relative">
           <div className="grid md:grid-cols-5 gap-8 items-center">
             <div className="md:col-span-2 flex justify-center">
-              <div className="relative">
+              <div className="relative w-full max-w-[80%]">
                 <div className="absolute inset-0 bg-pink-500/10 rounded-full blur-xl animate-pulse"></div>
                 <div className="relative animate-float">
-                  <Shield className="h-48 w-48 text-pink-600" />
+                  <Shield className="h-36 w-36 mx-auto text-pink-600" />
                   <div className="absolute inset-0 flex items-center justify-center">
                     <div className="text-center">
-                      <p className="text-lg font-bold text-pink-500">GARANTIA</p>
-                      <p className="text-2xl font-bold text-pink-500">7 DIAS</p>
+                      <p className="text-base font-bold text-pink-500">GARANTIA</p>
+                      <p className="text-xl font-bold text-pink-500">7 DIAS</p>
                     </div>
                   </div>
                 </div>

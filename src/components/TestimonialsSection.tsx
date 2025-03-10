@@ -219,7 +219,7 @@ const TestimonialsSection: React.FC = () => {
             </p>
           </div>
 
-          {/* WhatsApp screenshots carousel */}
+          {/* WhatsApp screenshots carousel - updated container size */}
           <div className="relative mb-8 overflow-hidden">
             <div 
               ref={whatsappRef}
@@ -230,23 +230,23 @@ const TestimonialsSection: React.FC = () => {
                 style={{ transform: `translateX(-${currentWhatsAppIndex * 100}%)` }}
               >
                 {Array.from({ length: Math.ceil(whatsappProofs.length / 2) }).map((_, pageIndex) => (
-                  <div key={pageIndex} className="w-full flex-shrink-0 grid md:grid-cols-2 gap-6">
-                    {whatsappProofs.slice(pageIndex * 2, pageIndex * 2 + 2).map((proof, i) => (
+                  <div key={pageIndex} className="w-full flex-shrink-0 grid md:grid-cols-3 gap-6">
+                    {whatsappProofs.slice(pageIndex * 2, pageIndex * 2 + 3).map((proof, i) => (
                       <AnimatedCard 
                         key={proof.id} 
-                        className="p-4 flex flex-col items-center h-full"
+                        className="p-3 flex flex-col items-center h-full"
                         delay={i * 100}
                       >
-                        <div className="mb-3 flex items-center justify-center w-full bg-green-600 text-white rounded-t-lg py-2 px-4">
-                          <Phone className="w-4 h-4 mr-2" />
+                        <div className="mb-2 flex items-center justify-center w-full bg-green-600 text-white rounded-t-lg py-1 px-3 text-sm">
+                          <Phone className="w-3 h-3 mr-1" />
                           <p className="font-medium">{proof.name} - {proof.location}</p>
                         </div>
-                        <div className="relative w-full hover:-translate-y-1 transition-transform duration-300">
+                        <div className="relative w-full max-w-[50%] mx-auto hover:-translate-y-1 transition-transform duration-300">
                           <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0 hover:opacity-100 transition-opacity rounded-lg"></div>
                           <img 
                             src={proof.image} 
                             alt={`Depoimento de ${proof.name}`} 
-                            className="w-full h-auto rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all" 
+                            className="w-full h-auto rounded-lg shadow-md border border-gray-200 hover:shadow-lg transition-all" 
                           />
                         </div>
                       </AnimatedCard>
