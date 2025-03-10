@@ -1,12 +1,20 @@
 
 import React, { useState, useRef, useEffect } from 'react';
-import { ArrowLeft, ArrowRight, MessageSquare, Star } from 'lucide-react';
+import { ArrowLeft, ArrowRight, MessageSquare, Star, Phone } from 'lucide-react';
+import AnimatedCard from './AnimatedCard';
 
 interface Testimonial {
   id: number;
   content: string;
   author: string;
   rating: number;
+}
+
+interface WhatsAppProof {
+  id: number;
+  image: string;
+  name: string;
+  location: string;
 }
 
 const TestimonialsSection: React.FC = () => {
@@ -37,9 +45,51 @@ const TestimonialsSection: React.FC = () => {
     }
   ];
 
+  const whatsappProofs: WhatsAppProof[] = [
+    {
+      id: 1,
+      image: "/lovable-uploads/19ce3a54-cc0a-416c-b250-9572f2f8d7c3.png",
+      name: "Bruno SP",
+      location: "São Paulo"
+    },
+    {
+      id: 2,
+      image: "/lovable-uploads/bc380230-ef0a-48ef-91cb-a503853e20d7.png",
+      name: "Emerson",
+      location: "Cliente"
+    },
+    {
+      id: 3,
+      image: "/lovable-uploads/459eaa7f-5d19-4fa0-a22c-aa73d7b472a0.png",
+      name: "Marcelo",
+      location: "Brasília"
+    },
+    {
+      id: 4,
+      image: "/lovable-uploads/4e9cb375-accd-4976-b36e-e2a2402ddb61.png",
+      name: "Lucas",
+      location: "Alencar"
+    },
+    {
+      id: 5,
+      image: "/lovable-uploads/7600dcc8-1521-4787-8cba-098c5a2d7f48.png",
+      name: "Breno",
+      location: "Paraíba"
+    },
+    {
+      id: 6,
+      image: "/lovable-uploads/12f112d3-5a8a-4110-985a-0cfa54687a48.png",
+      name: "Vitor",
+      location: "Sergipe"
+    }
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [currentWhatsAppIndex, setCurrentWhatsAppIndex] = useState(0);
   const maxIndex = Math.ceil(testimonials.length / 2) - 1;
+  const maxWhatsAppIndex = Math.ceil(whatsappProofs.length / 2) - 1;
   const testimonialRef = useRef<HTMLDivElement>(null);
+  const whatsappRef = useRef<HTMLDivElement>(null);
 
   const nextTestimonial = () => {
     setCurrentIndex(prev => (prev === maxIndex ? 0 : prev + 1));
@@ -49,12 +99,27 @@ const TestimonialsSection: React.FC = () => {
     setCurrentIndex(prev => (prev === 0 ? maxIndex : prev - 1));
   };
 
+  const nextWhatsAppProof = () => {
+    setCurrentWhatsAppIndex(prev => (prev === maxWhatsAppIndex ? 0 : prev + 1));
+  };
+
+  const prevWhatsAppProof = () => {
+    setCurrentWhatsAppIndex(prev => (prev === 0 ? maxWhatsAppIndex : prev - 1));
+  };
+
   useEffect(() => {
-    const interval = setInterval(() => {
+    const testimonialInterval = setInterval(() => {
       nextTestimonial();
     }, 5000);
 
-    return () => clearInterval(interval);
+    const whatsappInterval = setInterval(() => {
+      nextWhatsAppProof();
+    }, 6000);
+
+    return () => {
+      clearInterval(testimonialInterval);
+      clearInterval(whatsappInterval);
+    };
   }, []);
 
   return (
@@ -75,7 +140,7 @@ const TestimonialsSection: React.FC = () => {
           </p>
         </div>
 
-        <div className="relative">
+        <div className="relative mb-16">
           <div 
             ref={testimonialRef}
             className="overflow-hidden"
@@ -137,6 +202,88 @@ const TestimonialsSection: React.FC = () => {
             >
               <ArrowRight className="h-5 w-5" />
             </button>
+          </div>
+        </div>
+
+        {/* WhatsApp Social Proof Section */}
+        <div className="mt-16 pt-8 border-t border-pink-100">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center px-4 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-4">
+              <Phone className="w-4 h-4 mr-2" /> CONVERSAS REAIS
+            </span>
+            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+              VEJA OS <span className="text-gradient-pink">RESULTADOS REAIS</span>
+            </h3>
+            <p className="max-w-3xl mx-auto text-lg text-gray-700">
+              Conversas no WhatsApp de clientes que já estão lucrando com a nossa lista de fornecedores:
+            </p>
+          </div>
+
+          {/* WhatsApp screenshots carousel */}
+          <div className="relative mb-8 overflow-hidden">
+            <div 
+              ref={whatsappRef}
+              className="overflow-hidden"
+            >
+              <div 
+                className="flex transition-transform duration-700 ease-in-out"
+                style={{ transform: `translateX(-${currentWhatsAppIndex * 100}%)` }}
+              >
+                {Array.from({ length: Math.ceil(whatsappProofs.length / 2) }).map((_, pageIndex) => (
+                  <div key={pageIndex} className="w-full flex-shrink-0 grid md:grid-cols-2 gap-6">
+                    {whatsappProofs.slice(pageIndex * 2, pageIndex * 2 + 2).map((proof, i) => (
+                      <AnimatedCard 
+                        key={proof.id} 
+                        className="p-4 flex flex-col items-center h-full"
+                        delay={i * 100}
+                      >
+                        <div className="mb-3 flex items-center justify-center w-full bg-green-600 text-white rounded-t-lg py-2 px-4">
+                          <Phone className="w-4 h-4 mr-2" />
+                          <p className="font-medium">{proof.name} - {proof.location}</p>
+                        </div>
+                        <div className="relative w-full hover:-translate-y-1 transition-transform duration-300">
+                          <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0 hover:opacity-100 transition-opacity rounded-lg"></div>
+                          <img 
+                            src={proof.image} 
+                            alt={`Depoimento de ${proof.name}`} 
+                            className="w-full h-auto rounded-lg shadow-lg border border-gray-200 hover:shadow-xl transition-all" 
+                          />
+                        </div>
+                      </AnimatedCard>
+                    ))}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* WhatsApp navigation controls */}
+            <div className="flex justify-center mt-8 items-center space-x-4">
+              <button 
+                onClick={prevWhatsAppProof}
+                className="h-10 w-10 rounded-full bg-white shadow-md flex items-center justify-center text-green-600 hover:bg-green-50 transition-colors"
+              >
+                <ArrowLeft className="h-5 w-5" />
+              </button>
+              
+              <div className="flex space-x-2">
+                {Array.from({ length: maxWhatsAppIndex + 1 }).map((_, i) => (
+                  <button
+                    key={i}
+                    className={`h-2 rounded-full transition-all ${
+                      i === currentWhatsAppIndex ? 'w-8 bg-green-500' : 'w-2 bg-green-200'
+                    }`}
+                    onClick={() => setCurrentWhatsAppIndex(i)}
+                  />
+                ))}
+              </div>
+              
+              <button 
+                onClick={nextWhatsAppProof}
+                className="h-10 w-10 rounded-full bg-white shadow-md flex items-center justify-center text-green-600 hover:bg-green-50 transition-colors"
+              >
+                <ArrowRight className="h-5 w-5" />
+              </button>
+            </div>
           </div>
         </div>
       </div>
