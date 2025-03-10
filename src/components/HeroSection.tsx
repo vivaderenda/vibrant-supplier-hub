@@ -1,5 +1,7 @@
+
 import React from 'react';
 import PulsatingButton from './PulsatingButton';
+
 const HeroSection: React.FC = () => {
   return <section className="relative min-h-screen pt-24 overflow-hidden flex items-center">
       {/* Background gradient with subtle animation */}
@@ -19,11 +21,11 @@ const HeroSection: React.FC = () => {
               <span>ACESSO EXCLUSIVO 2025</span>
             </div>
             
-            <h1 className="text-4xl md:text-5xl font-extrabold leading-tight lg:text-6xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
               Descubra os <span className="text-gradient-pink">Melhores Fornecedores</span> Nacionais para Revenda!
             </h1>
             
-            <p className="text-lg md:text-xl text-gray-700 font-extrabold">
+            <p className="text-lg md:text-xl text-gray-700 font-medium">
               LISTA DE FORNECEDORES PRODUTOS EM ATACADO E VAREJO!
             </p>
             
@@ -32,14 +34,14 @@ const HeroSection: React.FC = () => {
                 <div className="bg-pink-100 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                   <span className="text-pink-600 text-lg">🔥</span>
                 </div>
-                <p className="text-gray-600 font-extrabold text-2xl">De <span className="line-through text-gray-500">R$ 97,00</span> por apenas:</p>
+                <p className="text-gray-600">De <span className="line-through text-gray-500">R$ 97,00</span> por apenas:</p>
               </div>
               
               <div className="flex items-center space-x-3">
                 <div className="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                   <span className="text-green-600 text-lg">✓</span>
                 </div>
-                <p className="text-green-600 font-extrabold text-6xl">5x de R$ 9,90</p>
+                <p className="text-xl font-bold text-green-600">5x de R$ 9,90</p>
               </div>
               
               <div className="flex items-center space-x-3">
@@ -69,7 +71,7 @@ const HeroSection: React.FC = () => {
           
           <div className="hidden md:block relative">
             <div className="absolute -top-10 -left-10 w-64 h-64 bg-pink-300/20 rounded-full animate-pulse blur-3xl" />
-            <div className="relative glass-card p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500 px-[30px] py-[30px]">
+            <div className="relative glass-card p-8 transform rotate-3 hover:rotate-0 transition-transform duration-500">
               <div className="absolute -top-6 -right-6 bg-yellow-300 text-yellow-800 px-6 py-3 font-bold rounded-lg transform rotate-12 shadow-lg">
                 ACESSO IMEDIATO!
               </div>
@@ -91,4 +93,5 @@ const HeroSection: React.FC = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;

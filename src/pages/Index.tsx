@@ -1,3 +1,4 @@
+
 import React, { useEffect } from 'react';
 import Navbar from '@/components/Navbar';
 import HeroSection from '@/components/HeroSection';
@@ -8,43 +9,52 @@ import TestimonialsSection from '@/components/TestimonialsSection';
 import PricingSection from '@/components/PricingSection';
 import GuaranteeSection from '@/components/GuaranteeSection';
 import Footer from '@/components/Footer';
+
 const Index = () => {
   useEffect(() => {
     // Intersection Observer for reveal animations
-    const observer = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, {
-      threshold: 0.1
-    });
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
     document.querySelectorAll('.reveal-on-scroll').forEach(el => {
       observer.observe(el);
     });
 
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
+      anchor.addEventListener('click', function(e) {
         e.preventDefault();
+        
         const targetId = this.getAttribute('href')?.substring(1);
         if (!targetId) return;
+        
         const targetElement = document.getElementById(targetId);
         if (!targetElement) return;
+        
         window.scrollTo({
           top: targetElement.offsetTop - 100,
           behavior: 'smooth'
         });
       });
     });
+
     return () => {
       document.querySelectorAll('.reveal-on-scroll').forEach(el => {
         observer.unobserve(el);
       });
     };
   }, []);
-  return <div className="min-h-screen w-full overflow-x-hidden">
+
+  return (
+    <div className="min-h-screen w-full overflow-x-hidden">
       <Navbar />
       <HeroSection />
 
@@ -85,8 +95,17 @@ const Index = () => {
 
       {/* Floating CTA */}
       <div className="fixed bottom-6 right-6 z-50">
-        
+        <a 
+          href="#pricing"
+          className="flex items-center justify-center h-14 w-14 bg-pink-600 text-white rounded-full shadow-pink hover:bg-pink-700 transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 10l7-7m0 0l7 7m-7-7v18" />
+          </svg>
+        </a>
       </div>
-    </div>;
+    </div>
+  );
 };
+
 export default Index;
