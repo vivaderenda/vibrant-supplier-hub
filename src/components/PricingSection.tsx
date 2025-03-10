@@ -1,12 +1,9 @@
-
 import React from 'react';
 import { Check, Flame } from 'lucide-react';
 import PulsatingButton from './PulsatingButton';
 import CountdownTimer from './CountdownTimer';
-
 const PricingSection: React.FC = () => {
-  return (
-    <section id="pricing" className="section-padding relative overflow-hidden">
+  return <section id="pricing" className="section-padding relative overflow-hidden">
       {/* Background elements */}
       <div className="absolute inset-0 bg-gradient-to-b from-white via-pink-50 to-white z-0" />
       <div className="absolute -left-40 top-40 w-80 h-80 bg-pink-500/5 rounded-full blur-3xl" />
@@ -55,7 +52,7 @@ const PricingSection: React.FC = () => {
                 <div className="relative mb-8">
                   <div className="absolute inset-0 bg-pink-500/10 blur-md rounded-xl"></div>
                   <div className="relative bg-white rounded-xl p-6 border border-pink-100 shadow-sm">
-                    <p className="text-sm text-pink-600 font-medium mb-1">Oferta especial:</p>
+                    <p className="text-pink-600 mb-1 font-bold text-base">Oferta especial:</p>
                     <p className="text-4xl font-bold text-pink-600 mb-2">R$ 47,00</p>
                     <p className="text-sm text-gray-500">ou 5x de R$ 9,90</p>
                   </div>
@@ -76,17 +73,16 @@ const PricingSection: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
-const Feature: React.FC<{ text: string }> = ({ text }) => (
-  <li className="flex items-start gap-3">
+const Feature: React.FC<{
+  text: string;
+}> = ({
+  text
+}) => <li className="flex items-start gap-3">
     <div className="h-6 w-6 rounded-full bg-green-100 flex items-center justify-center shrink-0 mt-0.5">
       <Check className="h-4 w-4 text-green-600" />
     </div>
     <span>{text}</span>
-  </li>
-);
-
+  </li>;
 export default PricingSection;
