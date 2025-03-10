@@ -57,6 +57,16 @@ const HeroSection: React.FC = () => {
                 Quero ter acesso aos Fornecedores Nacionais
               </PulsatingButton>
             </div>
+            
+            {/* Mobile image - visible only on smaller screens */}
+            <div className="md:hidden mt-8 relative">
+              <div className="glass-card p-4 transform rotate-3 hover:rotate-0 transition-transform duration-500">
+                <div className="absolute -top-4 -right-4 bg-yellow-300 text-yellow-800 px-3 py-1 text-xs font-bold rounded-lg transform rotate-12 shadow-lg">
+                  ACESSO!
+                </div>
+                <img alt="Fornecedores Nacionais" className="w-full h-auto rounded-lg shadow-lg" src="/lovable-uploads/e005766f-61ac-4300-b444-8093cb4e53d0.png" />
+              </div>
+            </div>
           </div>
           
           <div className="hidden md:block relative">
