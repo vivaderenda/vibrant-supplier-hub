@@ -62,7 +62,7 @@ const ProductsSection: React.FC = () => {
           <p className="text-lg text-gray-700 mb-8">
             <span className="text-pink-600 font-medium">🎯 Esses são apenas alguns exemplos</span> do que você receberá ao ter acesso à lista de fornecedores secretos.
           </p>
-          <PulsatingButton>
+          <PulsatingButton onClick={() => window.open('https://pay.kiwify.com.br/KaHkPAE', '_blank')}>
             📌 Quero ter acesso aos fornecedores secretos!
           </PulsatingButton>
         </div>

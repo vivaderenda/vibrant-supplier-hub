@@ -45,7 +45,7 @@ const GuaranteeSection: React.FC = () => {
                   </p>
                 </div>
                 
-                <PulsatingButton>
+                <PulsatingButton onClick={() => window.open('https://pay.kiwify.com.br/KaHkPAE', '_blank')}>
                   Garanta já sua lista de fornecedores e comece a lucrar!
                 </PulsatingButton>
               </div>

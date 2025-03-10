@@ -56,8 +56,8 @@ const PricingSection: React.FC = () => {
                   <div className="absolute inset-0 bg-pink-500/10 blur-md rounded-xl"></div>
                   <div className="relative bg-white rounded-xl p-6 border border-pink-100 shadow-sm">
                     <p className="text-sm text-pink-600 font-medium mb-1">Oferta especial:</p>
-                    <p className="text-4xl font-bold text-pink-600 mb-2">R$ 27,00</p>
-                    <p className="text-sm text-gray-500">ou 5x de R$ 5,89</p>
+                    <p className="text-4xl font-bold text-pink-600 mb-2">R$ 47,00</p>
+                    <p className="text-sm text-gray-500">ou 5x de R$ 9,90</p>
                   </div>
                 </div>
                 
@@ -67,7 +67,7 @@ const PricingSection: React.FC = () => {
                       ACESSO IMEDIATO!
                     </span>
                   </div>
-                  <PulsatingButton variant="primary" className="w-full">
+                  <PulsatingButton variant="primary" className="w-full" onClick={() => window.open('https://pay.kiwify.com.br/KaHkPAE', '_blank')}>
                     Quero minha lista agora!
                   </PulsatingButton>
                 </div>

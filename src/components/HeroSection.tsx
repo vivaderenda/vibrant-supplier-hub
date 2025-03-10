@@ -1,5 +1,7 @@
+
 import React from 'react';
 import PulsatingButton from './PulsatingButton';
+
 const HeroSection: React.FC = () => {
   return <section className="relative min-h-screen pt-24 overflow-hidden flex items-center">
       {/* Background gradient with subtle animation */}
@@ -39,19 +41,19 @@ const HeroSection: React.FC = () => {
                 <div className="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                   <span className="text-green-600 text-lg">✓</span>
                 </div>
-                <p className="text-xl font-bold text-green-600">5x de R$ 5,89</p>
+                <p className="text-xl font-bold text-green-600">5x de R$ 9,90</p>
               </div>
               
               <div className="flex items-center space-x-3">
                 <div className="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
                   <span className="text-green-600 text-lg">✓</span>
                 </div>
-                <p className="text-xl font-bold text-green-600">ou R$ 27,00 à vista</p>
+                <p className="text-xl font-bold text-green-600">ou R$ 47,00 à vista</p>
               </div>
             </div>
             
             <div className="pt-6">
-              <PulsatingButton variant="primary" className="w-full sm:w-auto">
+              <PulsatingButton variant="primary" className="w-full sm:w-auto" onClick={() => window.open('https://pay.kiwify.com.br/KaHkPAE', '_blank')}>
                 Quero ter acesso aos Fornecedores Nacionais
               </PulsatingButton>
             </div>
@@ -81,4 +83,5 @@ const HeroSection: React.FC = () => {
       </div>
     </section>;
 };
+
 export default HeroSection;
