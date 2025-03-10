@@ -1,7 +1,5 @@
-
 import React from 'react';
 import PulsatingButton from './PulsatingButton';
-
 const HeroSection: React.FC = () => {
   return <section className="relative min-h-screen pt-24 overflow-hidden flex items-center">
       {/* Background gradient with subtle animation */}
@@ -39,7 +37,7 @@ const HeroSection: React.FC = () => {
               
               <div className="flex items-center space-x-3">
                 <div className="bg-green-100 w-8 h-8 rounded-full flex items-center justify-center shrink-0">
-                  <span className="text-green-600 text-lg">✓</span>
+                  <span className="text-green-600 font-extrabold text-4xl">✓</span>
                 </div>
                 <p className="text-xl font-bold text-green-600">5x de R$ 9,90</p>
               </div>
@@ -93,5 +91,4 @@ const HeroSection: React.FC = () => {
       </div>
     </section>;
 };
-
 export default HeroSection;
