@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { ArrowLeft, ArrowRight, MessageSquare, Star, Phone } from 'lucide-react';
 import AnimatedCard from './AnimatedCard';
@@ -128,19 +127,19 @@ const TestimonialsSection: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-64 h-64 bg-purple-300/10 rounded-full blur-3xl" />
       
       <div className="max-container relative z-10">
-        <div className="text-center mb-16">
-          <span className="inline-block px-4 py-1 bg-pink-100 text-pink-800 rounded-full text-sm font-medium mb-4">
+        <div className="text-center mb-12 md:mb-16">
+          <span className="inline-block px-3 py-1 bg-pink-100 text-pink-800 rounded-full text-xs md:text-sm font-medium mb-4">
             CLIENTES SATISFEITOS
           </span>
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+          <h2 className="text-2xl md:text-4xl font-bold mb-4 md:mb-6">
             DEPOIMENTOS DOS <span className="text-gradient-pink">CLIENTES</span>
           </h2>
-          <p className="max-w-3xl mx-auto text-lg text-gray-700">
+          <p className="max-w-3xl mx-auto text-sm md:text-lg text-gray-700 px-4">
             Veja o que nossos clientes estão falando sobre a Lista de Fornecedores Nacionais:
           </p>
         </div>
 
-        <div className="relative mb-16">
+        <div className="relative mb-12 md:mb-16 px-4">
           <div 
             ref={testimonialRef}
             className="overflow-hidden"
@@ -175,7 +174,6 @@ const TestimonialsSection: React.FC = () => {
             </div>
           </div>
 
-          {/* Navigation controls */}
           <div className="flex justify-center mt-8 items-center space-x-4">
             <button 
               onClick={prevTestimonial}
@@ -205,43 +203,38 @@ const TestimonialsSection: React.FC = () => {
           </div>
         </div>
 
-        {/* WhatsApp Social Proof Section */}
-        <div className="mt-16 pt-8 border-t border-pink-100">
-          <div className="text-center mb-12">
-            <span className="inline-flex items-center px-4 py-1 bg-green-100 text-green-800 rounded-full text-sm font-medium mb-4">
-              <Phone className="w-4 h-4 mr-2" /> CONVERSAS REAIS
+        <div className="mt-12 md:mt-16 pt-8 border-t border-pink-100">
+          <div className="text-center mb-8 md:mb-12">
+            <span className="inline-flex items-center px-3 py-1 bg-green-100 text-green-800 rounded-full text-xs md:text-sm font-medium mb-4">
+              <Phone className="w-3 h-3 md:w-4 md:h-4 mr-2" /> CONVERSAS REAIS
             </span>
-            <h3 className="text-2xl md:text-3xl font-bold mb-4">
+            <h3 className="text-xl md:text-3xl font-bold mb-3 md:mb-4">
               VEJA OS <span className="text-gradient-pink">RESULTADOS REAIS</span>
             </h3>
-            <p className="max-w-3xl mx-auto text-lg text-gray-700">
+            <p className="max-w-3xl mx-auto text-sm md:text-lg text-gray-700 px-4">
               Conversas no WhatsApp de clientes que já estão lucrando com a nossa lista de fornecedores:
             </p>
           </div>
 
-          {/* WhatsApp screenshots carousel - updated container size */}
-          <div className="relative mb-8 overflow-hidden">
-            <div 
-              ref={whatsappRef}
-              className="overflow-hidden"
-            >
+          <div className="relative mb-8 overflow-hidden px-4">
+            <div ref={whatsappRef} className="overflow-hidden">
               <div 
                 className="flex transition-transform duration-700 ease-in-out"
                 style={{ transform: `translateX(-${currentWhatsAppIndex * 100}%)` }}
               >
                 {Array.from({ length: Math.ceil(whatsappProofs.length / 2) }).map((_, pageIndex) => (
-                  <div key={pageIndex} className="w-full flex-shrink-0 grid md:grid-cols-3 gap-6">
+                  <div key={pageIndex} className="w-full flex-shrink-0 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
                     {whatsappProofs.slice(pageIndex * 2, pageIndex * 2 + 3).map((proof, i) => (
                       <AnimatedCard 
                         key={proof.id} 
-                        className="p-3 flex flex-col items-center h-full"
+                        className="p-2 md:p-3 flex flex-col items-center h-full"
                         delay={i * 100}
                       >
-                        <div className="mb-2 flex items-center justify-center w-full bg-green-600 text-white rounded-t-lg py-1 px-3 text-sm">
+                        <div className="mb-2 flex items-center justify-center w-full bg-green-600 text-white rounded-t-lg py-1 px-2 md:px-3 text-xs md:text-sm">
                           <Phone className="w-3 h-3 mr-1" />
                           <p className="font-medium">{proof.name} - {proof.location}</p>
                         </div>
-                        <div className="relative w-full max-w-[50%] mx-auto hover:-translate-y-1 transition-transform duration-300">
+                        <div className="relative w-full max-w-[40%] sm:max-w-[50%] mx-auto hover:-translate-y-1 transition-transform duration-300">
                           <div className="absolute inset-0 bg-gradient-to-r from-pink-500/10 to-purple-500/10 opacity-0 hover:opacity-100 transition-opacity rounded-lg"></div>
                           <img 
                             src={proof.image} 
@@ -256,7 +249,6 @@ const TestimonialsSection: React.FC = () => {
               </div>
             </div>
 
-            {/* WhatsApp navigation controls */}
             <div className="flex justify-center mt-8 items-center space-x-4">
               <button 
                 onClick={prevWhatsAppProof}
