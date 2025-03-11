@@ -1,7 +1,5 @@
-
 import React from 'react';
 import { Shield, CreditCard, Lock, Mail, Clock, Phone } from 'lucide-react';
-
 const Footer: React.FC = () => {
   return <footer className="bg-gray-50 pt-16 pb-8">
       <div className="max-container">
@@ -25,24 +23,7 @@ const Footer: React.FC = () => {
         </div>
 
         {/* WhatsApp Support */}
-        <div className="max-w-lg mx-auto mb-12 p-4 bg-green-50 rounded-xl border border-green-100 flex flex-col md:flex-row items-center justify-center">
-          <div className="flex items-center mb-4 md:mb-0 md:mr-6">
-            <Phone className="h-10 w-10 text-green-600 mr-4" />
-            <div>
-              <p className="font-medium text-green-800">Dúvidas? Fale conosco</p>
-              <p className="text-sm text-green-700">Resposta em até 24h</p>
-            </div>
-          </div>
-          <a 
-            href="https://wa.me/5511999999999" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            className="inline-flex items-center px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
-          >
-            <span className="mr-2">Enviar Mensagem</span>
-            <Phone className="h-4 w-4" />
-          </a>
-        </div>
+        
 
         <div className="border-t border-gray-200 mt-8 pt-8 text-center">
           <p className="text-sm text-gray-500 mb-4">
@@ -63,5 +44,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>;
 };
-
 export default Footer;
