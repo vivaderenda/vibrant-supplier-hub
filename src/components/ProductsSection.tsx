@@ -4,7 +4,7 @@ import AnimatedCard from './AnimatedCard';
 import PulsatingButton from './PulsatingButton';
 
 interface ProductItem {
-  icon: string;
+  image: string; // Mudando de icon para image
   name: string;
   price: string;
   delay: number;
@@ -12,18 +12,18 @@ interface ProductItem {
 
 const ProductsSection: React.FC = () => {
   const products: ProductItem[] = [
-    { icon: '💄', name: 'Maquiagem', price: 'A partir de R$ 2,00', delay: 0 },
-    { icon: '📱', name: 'iPhones', price: 'Todos os modelos disponíveis', delay: 100 },
-    { icon: '⚡', name: 'Eletrônicos', price: 'A partir de R$ 25,00', delay: 200 },
-    { icon: '🌎', name: 'Importados', price: 'A partir de R$ 25,00', delay: 300 },
-    { icon: '👜', name: 'Bolsas', price: 'A partir de R$ 10,00', delay: 400 },
-    { icon: '⚽', name: 'Camisas de Futebol', price: 'A partir de R$ 30,00', delay: 500 },
-    { icon: '⌚', name: 'Relógios', price: 'A partir de R$ 10,00', delay: 600 },
-    { icon: '👟', name: 'Calçados', price: 'A partir de R$ 30,00', delay: 700 },
-    { icon: '🌿', name: 'Perfumes', price: 'A partir de R$ 70,00', delay: 800 },
-    { icon: '👗', name: 'Moda Feminina', price: 'A partir de R$ 10,00', delay: 900 },
-    { icon: '💍', name: 'Semijoias', price: 'A partir de R$ 5,00', delay: 1000 },
-    { icon: '🧸', name: 'Brinquedos', price: 'A partir de R$ 1,50', delay: 1100 },
+    { image: '/lovable-uploads/12f112d3-5a8a-4110-985a-0cfa54687a48.png', name: 'Maquiagem', price: 'A partir de R$ 2,00', delay: 0 },
+    { image: '/lovable-uploads/19ce3a54-cc0a-416c-b250-9572f2f8d7c3.png', name: 'iPhones', price: 'Todos os modelos disponíveis', delay: 100 },
+    { image: '/lovable-uploads/459eaa7f-5d19-4fa0-a22c-aa73d7b472a0.png', name: 'Eletrônicos', price: 'A partir de R$ 25,00', delay: 200 },
+    { image: '/lovable-uploads/4e9cb375-accd-4976-b36e-e2a2402ddb61.png', name: 'Importados', price: 'A partir de R$ 25,00', delay: 300 },
+    { image: '/lovable-uploads/7600dcc8-1521-4787-8cba-098c5a2d7f48.png', name: 'Bolsas', price: 'A partir de R$ 10,00', delay: 400 },
+    { image: '/lovable-uploads/bc380230-ef0a-48ef-91cb-a503853e20d7.png', name: 'Camisas de Futebol', price: 'A partir de R$ 30,00', delay: 500 },
+    { image: '/lovable-uploads/e005766f-61ac-4300-b444-8093cb4e53d0.png', name: 'Relógios', price: 'A partir de R$ 10,00', delay: 600 },
+    { image: '/lovable-uploads/12f112d3-5a8a-4110-985a-0cfa54687a48.png', name: 'Calçados', price: 'A partir de R$ 30,00', delay: 700 },
+    { image: '/lovable-uploads/19ce3a54-cc0a-416c-b250-9572f2f8d7c3.png', name: 'Perfumes', price: 'A partir de R$ 70,00', delay: 800 },
+    { image: '/lovable-uploads/459eaa7f-5d19-4fa0-a22c-aa73d7b472a0.png', name: 'Moda Feminina', price: 'A partir de R$ 10,00', delay: 900 },
+    { image: '/lovable-uploads/4e9cb375-accd-4976-b36e-e2a2402ddb61.png', name: 'Semijoias', price: 'A partir de R$ 5,00', delay: 1000 },
+    { image: '/lovable-uploads/7600dcc8-1521-4787-8cba-098c5a2d7f48.png', name: 'Brinquedos', price: 'A partir de R$ 1,50', delay: 1100 },
   ];
 
   return (
@@ -50,7 +50,9 @@ const ProductsSection: React.FC = () => {
               delay={product.delay}
             >
               <div className="h-full flex flex-col">
-                <div className="text-4xl mb-4">{product.icon}</div>
+                <div className="mb-4 h-16 flex items-center justify-center">
+                  <img src={product.image} alt={product.name} className="h-full object-contain" />
+                </div>
                 <h3 className="text-xl font-bold mb-2">{product.name}</h3>
                 <p className="text-pink-600 font-medium mt-auto">{product.price}</p>
               </div>
