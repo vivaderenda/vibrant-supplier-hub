@@ -1,10 +1,12 @@
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import AnimatedCard from './AnimatedCard';
 import PulsatingButton from './PulsatingButton';
 import { Input } from './ui/input';
 import { Label } from './ui/label';
 import { Switch } from './ui/switch';
+import { Button } from './ui/button';
+import { Upload } from 'lucide-react';
 
 interface ProductItem {
   image: string;
@@ -32,8 +34,9 @@ const ProductsSection: React.FC = () => {
   const [editMode, setEditMode] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
   const [newImageUrl, setNewImageUrl] = useState("");
+  const fileInputRef = useRef<HTMLInputElement>(null);
   
-  const handleImageUpdate = (index: number) => {
+  const handleImageUrlUpdate = (index: number) => {
     if (newImageUrl.trim() !== "") {
       const updatedProducts = [...products];
       updatedProducts[index] = {
@@ -44,6 +47,28 @@ const ProductsSection: React.FC = () => {
       setNewImageUrl("");
       setSelectedProduct(null);
     }
+  };
+  
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
+    const file = event.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const result = e.target?.result as string;
+        const updatedProducts = [...products];
+        updatedProducts[index] = {
+          ...updatedProducts[index],
+          image: result
+        };
+        setProducts(updatedProducts);
+        setSelectedProduct(null);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
+
+  const triggerFileInput = () => {
+    fileInputRef.current?.click();
   };
 
   const handleProductCardClick = (index: number) => {
@@ -88,22 +113,44 @@ const ProductsSection: React.FC = () => {
                   className="h-24 object-contain"
                 />
               </div>
-              <div>
-                <Label htmlFor="imageUrl">URL da nova imagem</Label>
-                <Input
-                  id="imageUrl"
-                  type="text"
-                  value={newImageUrl}
-                  onChange={(e) => setNewImageUrl(e.target.value)}
-                  placeholder="Insira a URL da imagem"
-                />
+              
+              <div className="flex flex-col space-y-4">
+                <div>
+                  <Label htmlFor="imageUrl">URL da nova imagem</Label>
+                  <Input
+                    id="imageUrl"
+                    type="text"
+                    value={newImageUrl}
+                    onChange={(e) => setNewImageUrl(e.target.value)}
+                    placeholder="Insira a URL da imagem"
+                  />
+                </div>
+                
+                <div className="flex flex-col space-y-2">
+                  <Label>Ou faça upload de uma imagem</Label>
+                  <input
+                    type="file"
+                    ref={fileInputRef}
+                    accept="image/*"
+                    className="hidden"
+                    onChange={(e) => handleFileUpload(e, selectedProduct)}
+                  />
+                  <Button 
+                    onClick={triggerFileInput}
+                    className="w-full bg-gray-100 text-gray-800 hover:bg-gray-200"
+                    variant="outline"
+                  >
+                    <Upload className="mr-2 h-4 w-4" /> Escolher imagem
+                  </Button>
+                </div>
               </div>
+              
               <div className="flex space-x-2">
                 <button 
                   className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700"
-                  onClick={() => handleImageUpdate(selectedProduct)}
+                  onClick={() => handleImageUrlUpdate(selectedProduct)}
                 >
-                  Atualizar
+                  Atualizar URL
                 </button>
                 <button 
                   className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md hover:bg-gray-400"
