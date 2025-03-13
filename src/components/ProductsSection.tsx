@@ -6,78 +6,82 @@ import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 import { Button } from './ui/button';
 import { Upload } from 'lucide-react';
+
 interface ProductItem {
   image: string;
   name: string;
   price: string;
   delay: number;
 }
+
 const ProductsSection: React.FC = () => {
   const [products, setProducts] = useState<ProductItem[]>([{
-    image: '/lovable-uploads/12f112d3-5a8a-4110-985a-0cfa54687a48.png',
+    image: '/lovable-uploads/61bdfa79-c8ec-4a99-8a51-fb20359904f9.png',
     name: 'Maquiagem',
     price: 'A partir de R$ 2,00',
     delay: 0
   }, {
-    image: '/lovable-uploads/19ce3a54-cc0a-416c-b250-9572f2f8d7c3.png',
+    image: '/lovable-uploads/91146925-fb0c-4a42-96ef-9de1fa39f3aa.png',
     name: 'iPhones',
     price: 'Todos os modelos disponíveis',
     delay: 100
   }, {
-    image: '/lovable-uploads/459eaa7f-5d19-4fa0-a22c-aa73d7b472a0.png',
+    image: '/lovable-uploads/23e3f3d4-f34c-47f5-8174-13ffd1881d1c.png',
     name: 'Eletrônicos',
     price: 'A partir de R$ 25,00',
     delay: 200
   }, {
-    image: '/lovable-uploads/4e9cb375-accd-4976-b36e-e2a2402ddb61.png',
+    image: '/lovable-uploads/836d92f0-fb2b-499f-8db4-9b46902609b5.png',
     name: 'Importados',
     price: 'A partir de R$ 25,00',
     delay: 300
   }, {
-    image: '/lovable-uploads/7600dcc8-1521-4787-8cba-098c5a2d7f48.png',
+    image: '/lovable-uploads/ee33d379-b9d6-4601-bb8e-c98d00680b80.png',
     name: 'Bolsas',
     price: 'A partir de R$ 10,00',
     delay: 400
   }, {
-    image: '/lovable-uploads/bc380230-ef0a-48ef-91cb-a503853e20d7.png',
+    image: '/lovable-uploads/70760189-6587-4126-8d8b-8db00dd1f8bd.png',
     name: 'Camisas de Futebol',
     price: 'A partir de R$ 30,00',
     delay: 500
   }, {
-    image: '/lovable-uploads/e005766f-61ac-4300-b444-8093cb4e53d0.png',
+    image: '/lovable-uploads/9214b50c-74ed-4664-bbe0-2be38d154c1b.png',
     name: 'Relógios',
     price: 'A partir de R$ 10,00',
     delay: 600
   }, {
-    image: '/lovable-uploads/12f112d3-5a8a-4110-985a-0cfa54687a48.png',
+    image: '/lovable-uploads/da8c79b9-983e-4a19-98db-9c3a3a936957.png',
     name: 'Calçados',
     price: 'A partir de R$ 30,00',
     delay: 700
   }, {
-    image: '/lovable-uploads/19ce3a54-cc0a-416c-b250-9572f2f8d7c3.png',
+    image: '/lovable-uploads/ac5f1d4d-0604-4c3d-919c-cf723381182b.png',
     name: 'Perfumes',
     price: 'A partir de R$ 70,00',
     delay: 800
   }, {
-    image: '/lovable-uploads/459eaa7f-5d19-4fa0-a22c-aa73d7b472a0.png',
+    image: '/lovable-uploads/99752724-afe8-41e6-952c-0af46c47cc27.png',
     name: 'Moda Feminina',
     price: 'A partir de R$ 10,00',
     delay: 900
   }, {
-    image: '/lovable-uploads/4e9cb375-accd-4976-b36e-e2a2402ddb61.png',
+    image: '/lovable-uploads/aff80d80-9693-417f-a1d6-4320c48a06b2.png',
     name: 'Semijoias',
     price: 'A partir de R$ 5,00',
     delay: 1000
   }, {
-    image: '/lovable-uploads/7600dcc8-1521-4787-8cba-098c5a2d7f48.png',
+    image: '/lovable-uploads/ff7976f9-c547-4e25-a294-b70d3f2e929a.png',
     name: 'Brinquedos',
     price: 'A partir de R$ 1,50',
     delay: 1100
   }]);
+
   const [editMode, setEditMode] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<number | null>(null);
   const [newImageUrl, setNewImageUrl] = useState("");
   const fileInputRef = useRef<HTMLInputElement>(null);
+
   const handleImageUrlUpdate = (index: number) => {
     if (newImageUrl.trim() !== "") {
       const updatedProducts = [...products];
@@ -90,6 +94,7 @@ const ProductsSection: React.FC = () => {
       setSelectedProduct(null);
     }
   };
+
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
     const file = event.target.files?.[0];
     if (file) {
@@ -107,15 +112,18 @@ const ProductsSection: React.FC = () => {
       reader.readAsDataURL(file);
     }
   };
+
   const triggerFileInput = () => {
     fileInputRef.current?.click();
   };
+
   const handleProductCardClick = (index: number) => {
     if (editMode) {
       setSelectedProduct(index);
       setNewImageUrl(products[index].image);
     }
   };
+
   return <section id="fornecedores" className="section-padding bg-gradient-to-b from-white to-pink-50">
       <div className="max-container">
         <div className="text-center mb-16">
@@ -130,7 +138,10 @@ const ProductsSection: React.FC = () => {
             <span className="text-pink-600 font-medium"> Você pode escolher trabalhar apenas com um segmento ou comprar de vários para revender!</span>
           </p>
           
-          
+          <div className="flex items-center justify-center mt-6 gap-2">
+            <Label htmlFor="edit-mode" className="cursor-pointer">Modo de Edição</Label>
+            <Switch id="edit-mode" checked={editMode} onCheckedChange={setEditMode} />
+          </div>
         </div>
 
         {selectedProduct !== null && editMode && <div className="mb-8 p-4 bg-white rounded-lg shadow-md max-w-xl mx-auto">
@@ -189,4 +200,5 @@ const ProductsSection: React.FC = () => {
       </div>
     </section>;
 };
+
 export default ProductsSection;
