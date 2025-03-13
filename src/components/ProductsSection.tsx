@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import AnimatedCard from './AnimatedCard';
 import PulsatingButton from './PulsatingButton';
 import { Input } from './ui/input';
-import { Form, FormField, FormItem, FormLabel, FormControl } from './ui/form';
+import { Label } from './ui/label';
 import { Switch } from './ui/switch';
 
 interface ProductItem {
@@ -68,14 +68,12 @@ const ProductsSection: React.FC = () => {
             <span className="text-pink-600 font-medium"> Você pode escolher trabalhar apenas com um segmento ou comprar de vários para revender!</span>
           </p>
           
-          <div className="mt-4 flex items-center justify-center">
-            <FormItem className="flex items-center space-x-2">
-              <FormLabel className="text-sm">Modo de Edição</FormLabel>
-              <Switch 
-                checked={editMode} 
-                onCheckedChange={setEditMode} 
-              />
-            </FormItem>
+          <div className="mt-4 flex items-center justify-center space-x-2">
+            <Label className="text-sm">Modo de Edição</Label>
+            <Switch 
+              checked={editMode} 
+              onCheckedChange={setEditMode} 
+            />
           </div>
         </div>
 
@@ -90,15 +88,16 @@ const ProductsSection: React.FC = () => {
                   className="h-24 object-contain"
                 />
               </div>
-              <FormItem>
-                <FormLabel>URL da nova imagem</FormLabel>
+              <div>
+                <Label htmlFor="imageUrl">URL da nova imagem</Label>
                 <Input
+                  id="imageUrl"
                   type="text"
                   value={newImageUrl}
                   onChange={(e) => setNewImageUrl(e.target.value)}
                   placeholder="Insira a URL da imagem"
                 />
-              </FormItem>
+              </div>
               <div className="flex space-x-2">
                 <button 
                   className="px-4 py-2 bg-pink-600 text-white rounded-md hover:bg-pink-700"
